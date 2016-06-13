@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VermiCompost.Data;
 using VermiCompost.ViewModels.Composters;
+using VermiCompost.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,9 +44,23 @@ namespace VermiCompost.API
         }
 
         // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        //add Products to a Composter, pass the ComposterId and the name of the Product
+        [HttpPost("{id}")]
+        public IActionResult Post(int id, [FromBody]Product product)
         {
+            //create product
+            _db.Products.Add(product);
+            _db.SaveChanges();
+
+            //add product to composters using the junction object
+            _db.CompostersProducts.Add(new ComposterProduct
+            {
+                ComposterId = id,
+                ProductId = product.Id
+            });
+            _db.SaveChanges();
+
+            return Ok();
         }
 
         // PUT api/values/5

@@ -1,0 +1,23 @@
+﻿<h1>Composters</h1>
+
+<h3><a href="/composters/create">Add a Composter</a> </h3>
+<br />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Website</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="composter in controller.composters">
+        <td>{{composter.id}}</td>
+        <td><a href="/composters/detail/{{composter.id}}">{{composter.name}}</a></td>
+        <td>{{composter.website}}</td>
+
+        <td><a href="/composters/edit/{{composter.id}}">Edit</a></td>
+        <td><a href="/composters/delete/{{composter.id}}">Delete</a></td>
+    </tr>
+</table>

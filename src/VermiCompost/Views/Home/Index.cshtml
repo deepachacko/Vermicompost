@@ -10,7 +10,9 @@
         <h1>VermiCompost</h1>
         <div>
           <a href="/">Home</a> /
-           <a href="/about">About</a>
+           <a href="/about">About</a> /
+            <a href="/composters">Composters</a> 
+
 
            / <a href="/secret">Secret</a> /
            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
@@ -42,5 +44,8 @@
     <script src="~/ngapp/controllers/accountcontroller.js"></script>
     <script src="~/ngapp/services/accountservice.js"></script>
 
+    <script src="~/ngApp/services/compostersServices.js"></script>
+    <script src="~/ngApp/controllers/compostersEditController.js"></script>
+    <script src="~/ngApp/controllers/compostersDetail.js"></script>
 </body>
 </html>

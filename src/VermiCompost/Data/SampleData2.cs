@@ -12,6 +12,7 @@ namespace VermiCompost.Data
         public static void Initialize(IServiceProvider sp)
         {
             var db = sp.GetService<ApplicationDbContext>();
+            //db.Database.EnsureCreated();
 
             #region seed Composter
             if (!db.Composters.Any())
