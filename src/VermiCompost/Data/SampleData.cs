@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using VermiCompost.Models;
+using System.Collections.Generic;
 
 namespace VermiCompost.Data
 {
@@ -32,6 +33,31 @@ namespace VermiCompost.Data
 
                 // add claims
                 await userManager.AddClaimAsync(stephen, new Claim("IsAdmin", "true"));
+            }
+
+            //Ensure Deepa (IsAdmin)
+            var deepa = await userManager.FindByNameAsync("deepa@cc.com");
+            if (deepa==null)
+            {
+                //create user
+                deepa = new ApplicationUser
+                {
+                    FirstName="Deepa",
+                    LastName="Chacko",
+                    Email= "deepa@cc.com",
+                    UserName= "deepa@cc.com",
+                    //Composters = new List<Composter>
+                    //{
+                    //    new Composter
+                    //    {
+                            
+                    //    }
+                    //}
+                };
+                await userManager.CreateAsync(deepa, "Deepac123!");
+
+                //add claims
+                await userManager.AddClaimAsync(deepa, new Claim("IsAdmin", "true"));
             }
 
             // Ensure Mike (not IsAdmin)

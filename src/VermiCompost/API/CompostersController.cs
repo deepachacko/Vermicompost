@@ -28,6 +28,7 @@ namespace VermiCompost.API
         {
             var composters = _db.Composters.Select(c => new CompostersViewModel
             {
+                Id = c.Id,
                 Name = c.Name,
                 Website = c.Website,
                 Products = c.CompostersProducts.Select(cp => cp.Product).ToList()
@@ -38,9 +39,19 @@ namespace VermiCompost.API
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            var composter = _db.Composters.Where(c => c.Id == id).Select(c => new CompostersViewModel
+            {
+                Id = c.Id,
+                Name = c.Name,
+                Website = c.Website,
+
+                //Products = c.CompostersProducts.Select(cp => cp.Product).ToList()
+                Products = _db.CompostersProducts.Where(cp => cp.ComposterId == id).Select(cp => cp.Product).ToList()
+
+            }).FirstOrDefault();
+            return Ok(composter);
         }
 
         // POST api/values

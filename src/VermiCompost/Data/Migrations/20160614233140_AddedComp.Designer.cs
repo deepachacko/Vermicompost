@@ -8,8 +8,8 @@ using VermiCompost.Data;
 namespace VermiCompost.data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160611150517_Added_Compost")]
-    partial class Added_Compost
+    [Migration("20160614233140_AddedComp")]
+    partial class AddedComp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,6 +137,10 @@ namespace VermiCompost.data.migrations
                         .HasAnnotation("MaxLength", 256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 

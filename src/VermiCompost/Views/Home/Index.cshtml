@@ -4,8 +4,9 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
     <base href="/" />
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
-<body ng-controller="AccountController as account">
+<body ng-cloak ng-controller="AccountController as account">
     <div class="container">
         <h1>VermiCompost</h1>
         <div>
@@ -46,6 +47,7 @@
 
     <script src="~/ngApp/services/compostersServices.js"></script>
     <script src="~/ngApp/controllers/compostersEditController.js"></script>
-    <script src="~/ngApp/controllers/compostersDetail.js"></script>
+
+    <script src="~/ngApp/controllers/compostersDetailController.js"></script>
 </body>
 </html>

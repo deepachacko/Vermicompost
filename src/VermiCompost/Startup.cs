@@ -73,7 +73,7 @@ namespace VermiCompost
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            //SampleData2.Initialize(app.ApplicationServices);
+            
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
@@ -104,7 +104,8 @@ namespace VermiCompost
             });
 
            // initialize sample data
-           //SampleData.Initialize(app.ApplicationServices).Wait();
+           SampleData.Initialize(app.ApplicationServices).Wait();
+            SampleData2.Initialize(app.ApplicationServices);
 
         }
     }

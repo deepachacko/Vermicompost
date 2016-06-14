@@ -57,7 +57,7 @@ namespace VermiCompost {
             })
             .state('compostersCreate', {
                 url: '/composters/create',
-                templateUrl: '/ngApp/views/compostersCreate.html',
+                templateUrl: '/ngApp/views/composterCreate.html',
                 controller: VermiCompost.Controllers.CompostersCreateController,
                 controllerAs: 'controller'
             })

@@ -12,7 +12,7 @@ namespace VermiCompost.Data
         public static void Initialize(IServiceProvider sp)
         {
             var db = sp.GetService<ApplicationDbContext>();
-            //db.Database.EnsureCreated();
+            db.Database.EnsureCreated();
 
             #region seed Composter
             if (!db.Composters.Any())
@@ -46,6 +46,7 @@ namespace VermiCompost.Data
                     new Product {Name="Bedding" },
                     new Product {Name="Starter Kits" },
                 };//end of var products
+
                 db.Products.AddRange(products);
                 db.SaveChanges();
             }//end of if Products

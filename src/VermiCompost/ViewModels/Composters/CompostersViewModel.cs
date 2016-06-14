@@ -8,6 +8,7 @@ namespace VermiCompost.ViewModels.Composters
 {
     public class CompostersViewModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Website { get; set; }
         public List<Product> Products { get; set; }
