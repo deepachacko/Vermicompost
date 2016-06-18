@@ -4,8 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VermiCompost.Data;
-using VermiCompost.ViewModels.Composters;
 using VermiCompost.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,25 +16,18 @@ namespace VermiCompost.API
     public class CompostersController : Controller
     {
         private ApplicationDbContext _db;
-
+        
         public CompostersController(ApplicationDbContext db)
         {
             _db = db;
         }
-        
-        
+
+
         // GET: api/values
         [HttpGet]
         public IActionResult Get()
         {
-            var composters = _db.Composters.Select(c => new CompostersViewModel
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Website = c.Website,
-                Products = c.CompostersProducts.Select(cp => cp.Product).ToList()
-                
-            });
+            var composters = _db.Composters.ToList();
             return Ok(composters);
         }
 
@@ -41,18 +35,10 @@ namespace VermiCompost.API
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var composter = _db.Composters.Where(c => c.Id == id).Select(c => new CompostersViewModel
-            {
-                Id = c.Id,
-                Name = c.Name,
-                Website = c.Website,
-
-                //Products = c.CompostersProducts.Select(cp => cp.Product).ToList()
-                Products = _db.CompostersProducts.Where(cp => cp.ComposterId == id).Select(cp => cp.Product).ToList()
-
-            }).FirstOrDefault();
-            return Ok(composter);
+            var products = _db.CompostersProducts.Where(cp => cp.ComposterId == id).Select(cp=>cp.Product).ToList();
+            return Ok(products);
         }
+
 
         // POST api/values
         //add Products to a Composter, pass the ComposterId and the name of the Product

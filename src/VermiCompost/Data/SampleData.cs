@@ -46,13 +46,6 @@ namespace VermiCompost.Data
                     LastName="Chacko",
                     Email= "deepa@cc.com",
                     UserName= "deepa@cc.com",
-                    //Composters = new List<Composter>
-                    //{
-                    //    new Composter
-                    //    {
-                            
-                    //    }
-                    //}
                 };
                 await userManager.CreateAsync(deepa, "Deepac123!");
 

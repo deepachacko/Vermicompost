@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<h1>Add a Composter</h1>
+<form ng-submit="controller.saveComposter()">
+    <div>
+        <label>Name</label>
+        <input type="text" ng-model="controller.composter.name"/>
+    </div>
+    <div>
+        <label>Website</label>
+        <input type="text" ng-model="controller.composter.website" />
+    </div>
 
-</body>
-</html>
+    <input type="submit" value="Create" />
+    <input type="button" ng-click="controller.cancel()" value="Cancel" />
+</form>

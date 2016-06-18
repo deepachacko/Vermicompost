@@ -1,7 +1,26 @@
 namespace VermiCompost.Controllers {
 
     export class HomeController {
-        public message = 'Hello from the home page!';
+        
+        public file;
+
+        constructor(private filepickerService: any, private $scope: ng.IScope) { }
+
+        public pickFile() {
+            this.filepickerService.pick(
+                { mimetype: 'image/*' },
+                this.fileUploaded.bind(this) 
+            );
+        }
+
+        public fileUploaded(file) {
+            this.file = file;
+            console.log(this.file);
+            //write the logic to send the url info of the image to database
+
+            this.$scope.$apply(); //refreshes the page
+        }
+
     }
 
 
@@ -18,6 +37,12 @@ namespace VermiCompost.Controllers {
 
     export class AboutController {
         public message = 'Hello from the about page!';
+
+        public userType;
+        constructor(accountService: VermiCompost.Services.AccountService) {
+            this.userType = accountService.getUserInfo();
+            console.log(this.userType);
+        }
     }
 
 }

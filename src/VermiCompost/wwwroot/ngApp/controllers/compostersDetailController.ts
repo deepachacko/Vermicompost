@@ -3,13 +3,18 @@
     //When you want to display all Composters
     export class CompostersController {
         public composters;
+        public canEdit;
 
-        constructor(private compostersServices: VermiCompost.Services.CompostersServices) {
+        constructor(
+            private compostersServices: VermiCompost.Services.CompostersServices,
+            private accountService: VermiCompost.Services.AccountService) {
+
             this.getComposters();
+            this.canEdit = accountService.getUserInfo();
         }
 
         getComposters() {
-            this.composters = this.compostersServices.getComposters();
+            this.composters = this.compostersServices.getComposters()
         }
     }
 
@@ -19,11 +24,11 @@
         public composter;
 
         constructor(
-            private composterServices: VermiCompost.Services.CompostersServices,
+            private compostersServices: VermiCompost.Services.CompostersServices,
             private $state: angular.ui.IStateService) { }
 
         saveComposter() {
-            this.composterServices.saveComposter(this.composter)
+            this.compostersServices.saveComposter(this.composter)
                 .then(() => {
                     this.$state.go('composters');
                 });
@@ -38,30 +43,33 @@
     export class CompostersDetailController {
         public composterId;
         public composter;
-        public product;
+        public products;
 
         constructor(private compostersServices: VermiCompost.Services.CompostersServices,
             private $state: angular.ui.IStateService,
             private $stateParams: angular.ui.IStateParamsService) {
-
+            
             this.composterId = $stateParams["id"];
-            this.getComposter();
+            this.getAllProducts();
         }
 
-        getComposter() {
-            this.composter = this.compostersServices.getComposter(this.composterId);
+        //getComposter() {
+        //    this.composter = this.compostersServices.getComposter(this.composterId);
+        //}
+
+        getAllProducts() {
+            this.products = this.compostersServices.getAllProducts(this.composterId);
         }
 
-        saveProduct() {
-            this.compostersServices.saveProduct(this.composterId, this.product)
-                .then(() => {
-                    this.getComposter();
-                })
-        }
+        //saveProduct() {
+        //    this.compostersServices.saveProduct(this.composterId, this.product)
+        //        .then(() => {
+        //            this.getComposter();
+        //        })
+        //}
 
         cancel() {
             this.$state.go('composters');
         }
-
     }
 }

@@ -19,12 +19,12 @@ namespace VermiCompost.Data
             {
                 var composters = new Composter[]
                 {
-                    new Composter { Name="Yelm Earthworm & Castings Farm", Website="yelmworms.com" },
-                    new Composter { Name="Seattle Tilth", Website="seattletilth.org" },
-                    new Composter { Name="Uncle Jim's Worm Farm", Website="unclejimswormfarm.com" },
-                    new Composter { Name="Amazon", Website="amazon.com" },
-                    new Composter { Name="3 in 1 Worm Ranch", Website="3in1wormranch.com" },
-                    new Composter { Name="Red Worm Composting", Website="redwormcomposting.com" },
+                    new Composter { Name="Yelm Earthworm & Castings Farm", Website="www.yelmworms.com" },
+                    new Composter { Name="Seattle Tilth", Website="www.seattletilth.org" },
+                    new Composter { Name="Uncle Jim's Worm Farm", Website="www.unclejimswormfarm.com" },
+                    new Composter { Name="Amazon", Website="www.amazon.com" },
+                    new Composter { Name="3 in 1 Worm Ranch", Website="www.3in1wormranch.com" },
+                    new Composter { Name="Red Worm Composting", Website="www.redwormcomposting.com" },
 
                 };//end of var composters
 

@@ -11,6 +11,7 @@ namespace VermiCompost.Models
         public string Name { get; set; }
         public string Website { get; set; }
 
+        //Junction Object
         public ICollection<ComposterProduct> CompostersProducts { get; set; }
     }
 }

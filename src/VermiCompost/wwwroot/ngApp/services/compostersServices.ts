@@ -16,10 +16,18 @@
             return this.compostersResources.query();
         }
 
-        //CRUD: Get only one
-        getComposter(composterId)  {
-            return this.compostersResources.get({id: composterId});
+        getProducts() {
+            return this.productsResources.query();
         }
+
+        getAllProducts(composterId) {
+            return this.compostersResources.query({ id: composterId });
+        }
+
+        //CRUD: Get only one
+        //getComposter(composterId)  {
+        //    return this.compostersResources.get({id: composterId});
+        //}
 
         //CRUD: Create Composter
         saveComposter(composter) {

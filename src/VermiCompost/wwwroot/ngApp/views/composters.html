@@ -9,7 +9,6 @@
         <th>Name</th>
         <th>Website</th>
         <th></th>
-        
     </tr>
 
     <tr ng-repeat="composter in controller.composters">
@@ -17,8 +16,8 @@
         <td><a href="/composters/detail/{{composter.id}}">{{composter.name}}</a></td>
         <td>{{composter.website}}</td>
         <td>
-            <a href="/composters/edit/{{composter.id}}">Edit</a> | 
-            <a href="/composters/delete/{{composter.id}}">Delete</a>
+            <a href="/composters/edit/{{composter.id}}" ng-show="controller.canEdit.isAdmin=='true'">Edit</a> 
+            <a href="/composters/delete/{{composter.id}}" ng-show="controller.canEdit.isAdmin=='true'">Delete</a>
         </td>
     </tr>
 </table>

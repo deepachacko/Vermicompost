@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace VermiCompost.Models
 {
+    //Junction Object
     public class ComposterProduct
     {
         public Composter Composter { get; set; }

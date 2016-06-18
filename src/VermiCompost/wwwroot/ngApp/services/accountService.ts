@@ -11,6 +11,12 @@ namespace VermiCompost.Services {
             this.$window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
         }
 
+        public getUserInfo() {
+            var data = this.$window.sessionStorage.getItem('claims');
+            return JSON.parse(data);
+        }
+
+
         public getUserName() {
             return this.$window.sessionStorage.getItem('userName');
         }

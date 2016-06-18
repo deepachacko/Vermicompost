@@ -15,5 +15,8 @@ namespace VermiCompost.Models
         public ICollection<Composter> Composters { get; set; }
         public ICollection<Product> Products { get; set; }
 
+        public ICollection<Blog> Blogs { get; set; }
+        
+
     }
 }

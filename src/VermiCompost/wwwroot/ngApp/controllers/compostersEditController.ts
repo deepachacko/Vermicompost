@@ -10,12 +10,12 @@
         private $state: angular.ui.IStateService) {
 
             this.composterId = $stateParams['id'];
-            this.getComposter();
+            //this.getComposter();
         }
 
-        getComposter() {
-            this.composter = this.compostersServices.getComposter(this.composterId);
-        }
+        //getComposter() {
+        //    this.composter = this.compostersServices.getComposter(this.composterId);
+        //}
 
         saveComposter() {
             this.compostersServices.saveComposter(this.composter)
