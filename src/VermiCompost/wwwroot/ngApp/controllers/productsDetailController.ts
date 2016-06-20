@@ -41,6 +41,13 @@
             this.product = this.compostersServices.getProductName(this.productId);
         }
 
+        editProduct() {
+            this.compostersServices.editProduct(this.product)
+                .then(() => {
+                    this.$state.go("products")
+                });
+        }
+
         deleteProduct() {
             this.compostersServices.deleteProduct(this.productId).then(() => {
                 this.$state.go("products")

@@ -30,7 +30,7 @@ namespace VermiCompost {
                 })
                 .state('compostersEdit', {
                     url: '/composters/edit/:id',
-                    templateUrl: '/ngApp/views/compostersEdit.html',
+                    templateUrl: '/ngApp/views/composterEdit.html',
                     controller: VermiCompost.Controllers.CompostersEditController,
                     controllerAs: 'controller'
                 })
@@ -49,6 +49,12 @@ namespace VermiCompost {
                 .state('productsDetail', {
                     url: '/products/detail/:id',
                     templateUrl: '/ngApp/views/productsDetail.html',
+                    controller: VermiCompost.Controllers.ProductsDetailController,
+                    controllerAs: 'controller'
+                })
+                .state('productsEdit', {
+                    url: '/products/edit/:id',
+                    templateUrl: '/ngApp/views/productEdit.html',
                     controller: VermiCompost.Controllers.ProductsDetailController,
                     controllerAs: 'controller'
                 })

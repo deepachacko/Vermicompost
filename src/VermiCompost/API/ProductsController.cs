@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using VermiCompost.Data;
 using Microsoft.EntityFrameworkCore;
+using VermiCompost.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -46,10 +47,22 @@ namespace VermiCompost.API
             return Ok(product);
         }
 
-        // POST api/values
+        // POST api/values Update a Product
         [HttpPost]
-        public void Post([FromBody]string value)
+        public IActionResult Post([FromBody]Product product)
         {
+            if (product.Id==0)
+            {
+                _db.Products.Add(product);
+                _db.SaveChanges();
+            }
+            else
+            {
+                var productToEdit = _db.Products.FirstOrDefault(p => p.Id == product.Id);
+                productToEdit.Name = product.Name;
+                _db.SaveChanges();
+            }
+            return Ok();
         }
 
         // PUT api/values/5

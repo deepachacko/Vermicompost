@@ -18,14 +18,12 @@
             });
 
             this.productsResources = $resource("/api/products/:id", null, {
-
                 getProductName: {
                     method: 'GET',
                     url: '/api/products/getProductName/:id',
                     isArray: false
                 }
             });
-
         }
 
         //CRUD: Read all Composters
@@ -66,6 +64,11 @@
         //ComposterId comes through the stateParams
         saveProduct(composterId, product) {
             return this.compostersResources.save({ id: composterId }, product).$promise;
+        }
+
+        //CRUD: Update a Product
+        editProduct(product) {
+            return this.productsResources.save(product).$promise;
         }
 
         //CRUD: delete Composter
