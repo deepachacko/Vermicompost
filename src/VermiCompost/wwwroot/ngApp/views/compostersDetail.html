@@ -2,7 +2,7 @@
 
 <br />
 
-<h3>Products Sold:</h3>
+<h3>Products Sold by {{controller.composter.name}} </h3>
 
 <ul>
     <li ng-repeat="product in controller.products">
@@ -10,3 +10,11 @@
     </li>
 </ul>
 
+<form ng-submit="controller.saveProduct()">
+    <div>
+        <label>Product Name</label>
+        <input ng-model="controller.productToSave.name" />
+        <input type="submit" value="Save Product" />
+        <input type="button" ng-click="controller.cancel()" value="Cancel" />
+    </div>
+</form>

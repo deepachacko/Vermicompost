@@ -16,6 +16,7 @@
 /// <reference path="ngapp/controllers/compostersdetailcontroller.js" />
 /// <reference path="ngapp/controllers/composterseditcontroller.js" />
 /// <reference path="ngapp/controllers/controllers.js" />
+/// <reference path="ngapp/controllers/productsdetailcontroller.js" />
 /// <reference path="ngapp/services/accountservice.js" />
 /// <reference path="ngapp/services/blogservice.js" />
 /// <reference path="ngapp/services/compostersservices.js" />

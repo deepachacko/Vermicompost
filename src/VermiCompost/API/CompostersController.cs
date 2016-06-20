@@ -16,14 +16,14 @@ namespace VermiCompost.API
     public class CompostersController : Controller
     {
         private ApplicationDbContext _db;
-        
+
         public CompostersController(ApplicationDbContext db)
         {
             _db = db;
         }
 
 
-        // GET: api/values
+        // GET: api/values Get all Composters
         [HttpGet]
         public IActionResult Get()
         {
@@ -31,32 +31,70 @@ namespace VermiCompost.API
             return Ok(composters);
         }
 
-        // GET api/values/5
+        // GET api/values/5 Based on the ComposterId, get all Products sold by the Composter
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var products = _db.CompostersProducts.Where(cp => cp.ComposterId == id).Select(cp=>cp.Product).ToList();
+            var products = _db.CompostersProducts.Where(cp => cp.ComposterId == id).Select(cp => cp.Product).ToList();
             return Ok(products);
+        }
+
+        // Custom Route because you are using the same Get Method with the same parameter Id
+        [HttpGet]
+        [Route("getComposter/{id}")]
+        public IActionResult GetComposter(int id)
+        {
+            var composter = _db.Composters.Where(c => c.Id == id).FirstOrDefault();
+            return Ok(composter);
         }
 
 
         // POST api/values
-        //add Products to a Composter, pass the ComposterId and the name of the Product
+        //create a new Product and add to a Composter, pass the ComposterId and the name of the Product
         [HttpPost("{id}")]
         public IActionResult Post(int id, [FromBody]Product product)
         {
-            //create product
-            _db.Products.Add(product);
-            _db.SaveChanges();
-
-            //add product to composters using the junction object
-            _db.CompostersProducts.Add(new ComposterProduct
+            //create and save the product first if it is a new product
+            //add product to existing composter using the junction object
+            var productToSave = _db.Products.FirstOrDefault(p => p.Name == product.Name);
+            if (productToSave.Id != 0)
             {
-                ComposterId = id,
-                ProductId = product.Id
-            });
+                _db.CompostersProducts.Add(new ComposterProduct
+                {
+                    ComposterId = id,
+                    ProductId = productToSave.Id
+                });
+            }
+            else if (productToSave== null)
+            {
+                _db.Products.Add(product);
+                _db.CompostersProducts.Add(new ComposterProduct
+                {
+                    ComposterId = id,
+                    ProductId = productToSave.Id
+                });
+            }
             _db.SaveChanges();
+            return Ok();
+        }
 
+
+        //Create a new Composter
+        [HttpPost]
+        public IActionResult Post([FromBody] Composter composter)
+        {
+            if (composter.Id == 0)
+            {
+                _db.Composters.Add(composter);
+                _db.SaveChanges();
+            }
+            else
+            {
+                var composterToEdit = _db.Composters.FirstOrDefault(c => c.Id == composter.Id);
+                composterToEdit.Name = composter.Name;
+                composterToEdit.Website = composter.Website;
+                _db.SaveChanges();
+            }
             return Ok();
         }
 
@@ -66,10 +104,17 @@ namespace VermiCompost.API
         {
         }
 
-        // DELETE api/values/5
+        // DELETE api/values/5 Based on the Composter Id, delete the composter and the related Products
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            var composter = _db.Composters.Where(c => c.Id == id).FirstOrDefault();
+            var composterWithProducts = _db.CompostersProducts.Where(cp => cp.ComposterId == id).Include(cp => cp.Product).FirstOrDefault();
+            _db.CompostersProducts.Remove(composterWithProducts);
+            _db.Composters.Remove(composter);// it was deleting the Products but retaining the Composter
+            _db.SaveChanges();
+            return Ok();
         }
     }
 }
+

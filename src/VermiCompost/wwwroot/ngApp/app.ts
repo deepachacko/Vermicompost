@@ -10,6 +10,54 @@ namespace VermiCompost {
             filepickerProvider.setKey('AYgYUakx0TCogpWE3FqiMz');
             // Define routes
             $stateProvider
+                .state('composters', {
+                    url: '/composters',
+                    templateUrl: '/ngApp/views/composters.html',
+                    controller: VermiCompost.Controllers.CompostersController,
+                    controllerAs: 'controller'
+                })
+                .state('compostersDetail', {
+                    url: '/composters/detail/:id',
+                    templateUrl: '/ngApp/views/compostersDetail.html',
+                    controller: VermiCompost.Controllers.CompostersDetailController,
+                    controllerAs: 'controller'
+                })
+                .state('compostersCreate', {
+                    url: '/composters/create',
+                    templateUrl: '/ngApp/views/compostersCreate.html',
+                    controller: VermiCompost.Controllers.CompostersCreateController,
+                    controllerAs: 'controller'
+                })
+                .state('compostersEdit', {
+                    url: '/composters/edit/:id',
+                    templateUrl: '/ngApp/views/compostersEdit.html',
+                    controller: VermiCompost.Controllers.CompostersEditController,
+                    controllerAs: 'controller'
+                })
+                .state('compostersDelete', {
+                    url: '/composters/delete/:id',
+                    templateUrl: '/ngApp/views/composterDelete.html',
+                    controller: VermiCompost.Controllers.CompostersDetailController,
+                    controllerAs: 'controller'
+                })
+                .state('products', {
+                    url: '/products',
+                    templateUrl: '/ngApp/views/products.html',
+                    controller: VermiCompost.Controllers.ProductsController,
+                    controllerAs: 'controller'
+                })
+                .state('productsDetail', {
+                    url: '/products/detail/:id',
+                    templateUrl: '/ngApp/views/productsDetail.html',
+                    controller: VermiCompost.Controllers.ProductsDetailController,
+                    controllerAs: 'controller'
+                })
+                .state('productsDelete', {
+                    url: '/products/delete/:id',
+                    templateUrl: '/ngApp/views/productDelete.html',
+                    controller: VermiCompost.Controllers.ProductsDetailController,
+                    controllerAs: 'controller'
+                })
                 .state('home', {
                     url: '/',
                     templateUrl: '/ngApp/views/home.html',
@@ -46,40 +94,10 @@ namespace VermiCompost {
                     controller: VermiCompost.Controllers.AboutController,
                     controllerAs: 'controller'
                 })
-                .state('composters', {
-                    url: '/composters',
-                    templateUrl: '/ngApp/views/composters.html',
-                    controller: VermiCompost.Controllers.CompostersController,
-                    controllerAs: 'controller'
-                })
-                .state('compostersDetail', {
-                    url: '/composters/detail/:id',
-                    templateUrl: '/ngApp/views/compostersDetail.html',
-                    controller: VermiCompost.Controllers.CompostersDetailController,
-                    controllerAs: 'controller'
-                })
-                .state('compostersCreate', {
-                    url: '/composters/create',
-                    templateUrl: '/ngApp/views/composterCreate.html',
-                    controller: VermiCompost.Controllers.CompostersCreateController,
-                    controllerAs: 'controller'
-                })
-                .state('compostersEdit', {
-                    url: '/composters/edit/:id',
-                    templateUrl: '/ngApp/views/compostersEdit.html',
-                    controller: VermiCompost.Controllers.CompostersEditController,
-                    controllerAs: 'controller'
-                })
-                .state('compostersDelete', {
-                    url: '/composters/delete/:id',
-                    templateUrl: '/ngApp/views/compostersDelete.html',
-                    controller: VermiCompost.Controllers.CompostersEditController,
-                    controllerAs: 'controller'
-                })
                 .state('notFound', {
                     url: '/notFound',
                     templateUrl: '/ngApp/views/notFound.html'
-                });
+                }) ;
 
             // Handle request for non-existent route
             $urlRouterProvider.otherwise('/notFound');

@@ -8,7 +8,7 @@ namespace VermiCompost.Models
     public class Blog: AuditObj
     {
         public int Id { get; set; }
-        public string Category { get; set; }
+        public string Product { get; set; }
         public string Title { get; set; }
         public string Message { get; set; }
 

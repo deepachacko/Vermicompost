@@ -1,0 +1,19 @@
+﻿<h1>Products</h1>
+<br />
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th></th>
+    </tr>
+
+    <tr ng-repeat="product in controller.products">
+        <td>{{product.id}}</td>
+        <td><a href="/products/detail/{{product.id}}">{{product.name}}</a></td>
+        <td>
+            <a href="/products/edit/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'">Edit</a>
+            <a href="/products/delete/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'">Delete</a>
+        </td>
+    </tr>
+</table>

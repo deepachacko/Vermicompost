@@ -15,8 +15,10 @@
         <div>
             <a href="/">Home</a> /
             <a href="/about">About</a> /
-            <a href="/composters">Composters</a>
-            / <a href="/secret">Secret</a> /
+            <a href="/composters">Composters</a> / 
+            <a href="/products">Products</a> /
+            
+            <a href="/secret">Secret</a> /
             <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
             <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
             <div ng-show="account.isLoggedIn()">
@@ -49,7 +51,6 @@
     <!-- Library Files -->
 
     <script src="~/lib/angular/angular.js"></script>
-
     <script src="~/lib/angular-resource/angular-resource.js"></script>
     <script src="~/lib/angular-animate/angular-animate.js"></script>
     <script src="~/lib/angular-touch/angular-touch.js"></script>
@@ -59,18 +60,22 @@
     <script type="text/javascript" src="//api.filestackapi.com/filestack.js"></script>
     <script src="~/lib/angular-filePicker/angular_filePicker.min.js"></script>
 
-    <!-- App Files-->
+
+    <!-- App Services Files-->
     <script src="~/ngapp/app.js"></script>
-    <script src="~/ngapp/controllers/controllers.js"></script>
     <script src="~/ngapp/services/services.js"></script>
+    <script src="~/ngApp/services/compostersServices.js"></script>
+
+
+    <!-- App Controller Files  -->
+    <script src="~/ngapp/controllers/controllers.js"></script>
+    <script src="~/ngApp/controllers/compostersEditController.js"></script>
+    <script src="~/ngApp/controllers/compostersDetailController.js"></script>
+    <script src="~/ngApp/controllers/productsDetailController.js"></script>
+
 
     <!-- Security -->
     <script src="~/ngapp/controllers/accountcontroller.js"></script>
     <script src="~/ngapp/services/accountservice.js"></script>
-
-    <script src="~/ngApp/services/compostersServices.js"></script>
-    <script src="~/ngApp/controllers/compostersEditController.js"></script>
-
-    <script src="~/ngApp/controllers/compostersDetailController.js"></script>
 </body>
 </html>

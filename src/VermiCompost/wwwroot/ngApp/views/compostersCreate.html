@@ -1,0 +1,14 @@
+﻿<form ng-submit="controller.saveComposter()">
+    <div>
+        <label>Composter Name:</label>
+        <input type="text" ng-model="controller.composterToSave.name" />
+    </div>
+    <div>
+        <label>Website:</label>
+        <input type="text" ng-model="controller.composterToSave.website" />
+    </div>
+    <div>
+        <input type="submit" value="Save Composter" />
+        <input type="button" ng-click="controller.cancel()" value="Cancel" />
+    </div>
+</form>
