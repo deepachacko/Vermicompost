@@ -2,10 +2,13 @@ namespace VermiCompost.Controllers {
 
     export class AccountController {
         public externalLogins;
+        public userClaim;
 
         public getUserName() {
             return this.accountService.getUserName();
         }
+
+        
 
         public getClaim(type) {
             return this.accountService.getClaim(type);
@@ -28,6 +31,8 @@ namespace VermiCompost.Controllers {
             this.getExternalLogins().then((results) => {
                 this.externalLogins = results;
             });
+
+            this.userClaim = accountService.getUserInfo();
         }
     }
 

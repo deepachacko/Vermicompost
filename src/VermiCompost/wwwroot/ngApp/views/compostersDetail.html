@@ -1,12 +1,8 @@
-﻿<a href="/composters">Back</a>
-
-<br />
-
-<h3>Products Sold by {{controller.composter.name}} </h3>
+﻿<h3>Products Sold by <a href="/composters">{{controller.composter.name}}</a></h3>
 
 <ul>
     <li ng-repeat="product in controller.products">
-        {{product.name}}
+        <a href="/products/detail/{{product.id}}">{{product.name}}</a>
     </li>
 </ul>
 
@@ -18,3 +14,4 @@
         <input type="button" ng-click="controller.cancel()" value="Cancel" />
     </div>
 </form>
+

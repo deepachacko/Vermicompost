@@ -14,7 +14,7 @@
     <tr ng-repeat="composter in controller.composters">
         <td>{{composter.id}}</td>
         <td><a href="/composters/detail/{{composter.id}}">{{composter.name}}</a></td>
-        <td>{{composter.website}}</td>
+        <td><a ng-href="{{composter.website}}">{{composter.website}}</a></td>
         <td>
             <a href="/composters/edit/{{composter.id}}" ng-show="controller.canEdit.isAdmin=='true'">Edit</a> 
             <a href="/composters/delete/{{composter.id}}" ng-show="controller.canEdit.isAdmin=='true'">Delete</a>

@@ -7,14 +7,17 @@
 
         constructor(
             private compostersServices: VermiCompost.Services.CompostersServices,
-            private accountService: VermiCompost.Services.AccountService) {
+            private accountService: VermiCompost.Services.AccountService
+        ) {
 
             this.getComposters();
             this.canEdit = accountService.getUserInfo();
         }
 
         getComposters() {
-            this.composters = this.compostersServices.getComposters()
+            this.compostersServices.getComposters().then((data) => {
+                this.composters = data;
+            })
         }
     }
 

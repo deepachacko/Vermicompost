@@ -1,11 +1,19 @@
-﻿<a href="/products">Back</a>
+﻿
+<div class="row">
+    <div class="col-md-3">
+        <h5>Composters that sell <a href="/products">{{controller.product.name}}</a> :</h5>
 
-<br />
+        <ul>
+            <li ng-repeat="composter in controller.composters">
+                <a href="/composters/detail/{{composter.id}}">{{composter.name}}</a>
+            </li>
+        </ul>
+    </div>
 
-<h5>Composters that sell {{controller.product.name}}:</h5>
+    <div class="col-md-9">
+        <img ng-src="{{controller.product.url}}" width="600" height="400" />
+    </div>
+    
+</div>
 
-<ul>
-    <li ng-repeat="composter in controller.composters">
-        {{composter.name}}
-    </li>
-</ul>
+

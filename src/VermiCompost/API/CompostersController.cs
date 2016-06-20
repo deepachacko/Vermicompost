@@ -57,17 +57,19 @@ namespace VermiCompost.API
             //create and save the product first if it is a new product
             //add product to existing composter using the junction object
             var productToSave = _db.Products.FirstOrDefault(p => p.Name == product.Name);
-            if (productToSave.Id != 0)
+            
+            if (productToSave == null)
             {
+                _db.Products.Add(product);
                 _db.CompostersProducts.Add(new ComposterProduct
                 {
                     ComposterId = id,
-                    ProductId = productToSave.Id
+                    ProductId = product.Id
                 });
             }
-            else if (productToSave== null)
+
+            else
             {
-                _db.Products.Add(product);
                 _db.CompostersProducts.Add(new ComposterProduct
                 {
                     ComposterId = id,

@@ -9,7 +9,6 @@
             this.compostersResources = $resource("/api/composters/:id");
 
             this.compostersResources = $resource("/api/composters/:id", null, {
-
                 getComposter: {
                     method: 'GET',
                     url: '/api/composters/getComposter/:id',
@@ -28,7 +27,7 @@
 
         //CRUD: Read all Composters
         getComposters() {
-            return this.compostersResources.query();
+            return this.compostersResources.query().$promise;
         }
 
         getComposter(composterId) {
