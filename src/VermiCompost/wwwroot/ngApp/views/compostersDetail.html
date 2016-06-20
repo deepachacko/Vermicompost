@@ -7,11 +7,13 @@
 </ul>
 
 <form ng-submit="controller.saveProduct()">
+    <div class="form-group">
+        <label class="sr-only">Product Name</label>
+        <input class="form-control" placeholder="add product here" ng-model="controller.productToSave.name" />
+    </div>
     <div>
-        <label>Product Name</label>
-        <input ng-model="controller.productToSave.name" />
-        <input type="submit" value="Save Product" />
-        <input type="button" ng-click="controller.cancel()" value="Cancel" />
+        <input class="btn btn-primary" type="submit" value="Save Product" />
+        <input class="btn btn-default" type="button" ng-click="controller.cancel()" value="Cancel" />
     </div>
 </form>
 
