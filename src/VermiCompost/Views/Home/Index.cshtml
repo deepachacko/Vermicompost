@@ -2,34 +2,39 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VermiCompost</title>
+    <title>One step to a greener earth!</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
-    <base href="/" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <base href="/" />
+
 </head>
 <body ng-cloak ng-controller="AccountController as account">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <h1><heading>Worm steps to a greener earth!</heading></h1>
+            <div>
+                <a href="/">Home</a> /
+                <a href="/about">About</a> /
+                <a href="/composters">Composters</a> /
+                <a href="/products">Products</a> /
+                <a href="/admin" ng-show="account.userClaim.isAdmin=='true'">Admin</a> /
 
-    <div class="container-fluid">
-        <h1>VermiCompost</h1>
-        <div>
-            <a href="/">Home</a> /
-            <a href="/about">About</a> /
-            <a href="/composters">Composters</a> / 
-            <a href="/products">Products</a> /
-            <a href="/admin" ng-show="account.userClaim.isAdmin=='true'">Admin</a> /
-            
-            <a href="/secret">Secret</a> /
-            <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
-            <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
-            <div ng-show="account.isLoggedIn()">
-                [{{account.getUserName()}}]
+                <a href="/secret">Secret</a> /
+                <a href="/login" ng-show="!account.isLoggedIn()">Login</a>
+                <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout</a>
+                <div ng-show="account.isLoggedIn()">
+                    [{{account.getUserName()}}]
+                </div>
             </div>
-        </div>
-        <hr />
+            <hr />
 
-        <ui-view></ui-view>
-    </div>
+            <ui-view></ui-view>
+        </div>
+    </nav>
+    
 
     @*<div class="container">
         <h1>VermiCompost</h1>

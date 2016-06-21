@@ -3,6 +3,30 @@ body {
     padding-bottom: 20px;
 }
 
+heading{
+    color: saddlebrown;
+}
+
+edit{
+    color: blue;
+}
+
+strong{
+    color: red;
+}
+
+pname{
+    color: black;
+}
+
+/*a:link{
+    color:blue;
+}*/
+
+/*a:visited{
+    color:green;
+}*/
+
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {

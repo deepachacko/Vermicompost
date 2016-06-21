@@ -1,7 +1,7 @@
 ﻿<h1>Products</h1>
 <br />
 
-<table class="table table-bordered table-striped">
+<!--<table class="table table-bordered table-striped">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -12,9 +12,22 @@
         <td>{{product.id}}</td>
         <td><a href="/products/detail/{{product.id}}">{{product.name}}</a></td>
         <td>
-            <a href="/products/edit/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'">Edit</a>
+            <a href="/products/edit/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="/products/delete/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'"><span class="glyphicon glyphicon-remove"></span></a>
+
             <a href="/products/delete/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'">Delete</a>
         </td>
     </tr>
-</table>
+</table>-->
+
+<ul>
+    <li ng-repeat="product in controller.products">
+        <a href="/products/detail/{{product.id}}"><pname>{{product.name}}</pname></a> 
+        <a href="/products/edit/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'"><edit><span class="glyphicon glyphicon-pencil"></span></edit></a>
+        <a href="/products/delete/{{product.id}}" ng-show="controller.canEdit.isAdmin=='true'"><strong><span class="glyphicon glyphicon-remove"></span></strong></a>
+    </li>
+</ul>
+
+
+
 

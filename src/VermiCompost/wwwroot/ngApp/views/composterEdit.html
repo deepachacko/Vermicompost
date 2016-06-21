@@ -1,5 +1,5 @@
 ﻿<h3>Edit Composter</h3>
-<form ng-submit="controller.saveComposter()">
+<form>
     <div class="form-group">
         <label class="sr-only">Name</label>
         <input type="text" ng-model="controller.composter.name" />
@@ -8,6 +8,12 @@
         <label class="sr-only">Website</label>
         <input type="text" ng-model="controller.composter.website" />
     </div>
-    <input class="btn btn-primary" type="submit" value="Save Changes" />
-    <input class="btn btn-default" type="button" ng-click="controller.cancel()" value="Cancel" />
+    <button class="btn btn-primary" ng-click="controller.saveComposter()">
+        <span class="glyphicon glyphicon-plus-sign"></span> Save
+    </button>
+
+    <button class="btn btn-default" ng-click="controller.cancel()">
+        <span class="glyphicon glyphicon-remove-sign"> </span> Cancel
+    </button>
+    
 </form>
